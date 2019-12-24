@@ -1,0 +1,13 @@
+import sys 
+!{sys.executable} -m pip install Word2Vec
+import sys 
+!{sys.executable} -m pip install gensim
+import gensim
+import os
+import pickle
+w2v_file = os.path.join(os.getcwd(), "word_vectors.w2v")
+model = gensim.models.Word2Vec.load(w2v_file)
+-----
+import pprint as pp
+pp.pprint(model.wv.most_similar(positive=['lower'], negative = ['raise'], topn=1000))
+#print(model.wv.index2word)
